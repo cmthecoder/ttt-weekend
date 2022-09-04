@@ -1,13 +1,13 @@
 /*-------------------------------- Constants --------------------------------*/
 const winningCombos = [
-  [board[0], board[1], board[2]],
-  [board[3], board[4], board[5]],
-  [board[6], board[7], board[8]],
-  [board[0], board[3], board[6]],
-  [board[1], board[4], board[7]],
-  [board[2], board[5], board[8]],
-  [board[0], board[4], board[8]],
-  [board[2], board[4], board[6]],
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6],
 ]
 
 
@@ -21,15 +21,32 @@ let board, turn, winner
 const squareEls = document.querySelectorAll('.square')
 
 const messageEl = document.getElementById('message')
-// console.log(squareEls)
-// console.log(messageEl)
+
+const listenToBoard = document.querySelector('.board')
+
 
 /*----------------------------- Event Listeners -----------------------------*/
-
+listenToBoard.addEventListener('click', handleClick)
 
 
 /*-------------------------------- Functions --------------------------------*/
 init()
+
+
+function init(){
+  board = [null, null, null, null, null, null, null, null, null]
+  turn = 1
+  winner = null
+  render()
+}
+
+
+function handleClick(evt){
+  console.log(evt.target.id)
+  let indexSquare = evt.target.id
+  let squareIdx = indexSquare.slice(2, 3)
+  console.log(squareIdx)
+}
 
 
 function render(){
@@ -59,18 +76,3 @@ function render(){
     }
   });
 }
-
-function init(){
-  board = [null, null, null, null, null, null, null, null, null]
-  turn = 1
-  winner = null
-  render()
-}
-
-// if(winner === null){
-//   if(box === 1){
-//     messageEl.textContent = "Player O turn"
-//   }
-// } else {
-//   messageEl.textContent ="gg"
-// }
