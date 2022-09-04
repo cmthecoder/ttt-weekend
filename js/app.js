@@ -44,8 +44,19 @@ function init(){
 function handleClick(evt){
   console.log(evt.target.id)
   let indexSquare = evt.target.id
-  let squareIdx = indexSquare.slice(2, 3)
-  console.log(squareIdx)
+  let sqIdx = indexSquare.slice(2, 3)
+  console.log(sqIdx)
+
+  if(board[sqIdx] !== null ){
+    return
+  }
+  if(winner !== null){
+    return
+  }
+  board[sqIdx] = turn
+  turn *= -1
+  winner = getWinner()
+  render()
 }
 
 
