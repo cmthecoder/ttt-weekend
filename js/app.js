@@ -87,3 +87,28 @@ function render(){
     }
   });
 }
+
+
+function getWinner(){
+  let total = []
+  winningCombos.forEach(function(combo){
+    const sum = combo[0] + combo[1] + combo [2]
+    total.push(sum)
+  })
+
+  let xIsW = total.some(x =>  x === 3)
+
+  let oIsW = total.some(o =>  o === -3)
+
+  let isTie = board.some(square => square === null)
+
+  if(xIsW){
+    winner = 'X'
+  } else if(oIsW){
+    winner = "O"
+  } else{
+    if(isTie === false){
+      winner = 'T'
+    }
+  }
+}
