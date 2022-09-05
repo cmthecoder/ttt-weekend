@@ -55,33 +55,30 @@ function handleClick(evt){
   }
   board[sqIdx] = turn
   turn *= -1
-  winner = getWinner()
+  getWinner()
   render()
 }
 
 
 function render(){
-  board.forEach((square, idx) => {
-    if(square === 1){
+  board.forEach((box, idx) => {
+    if(box === 1){
       squareEls[idx].textContent = 'X'
       squareEls[idx].style.color = 'yellow'
     }
 
-    if(square === -1){
+    if(box === -1){
       squareEls[idx].textContent = 'O'
       squareEls[idx].style.color = 'blue'
     }
-    
+
+    console.log(winner)
     if(winner === null){
-      if(turn === 1){
-        messageEl.textContent = "Player X's Turn!"
-      } else{
-        messageEl.textContent = "Player O's Turn!"
-      }
-    } else if(winner === 'T'){
-      messageEl.textContent = "It's a tie!"
+      messageEl.textContent = `Player ${turn === 1 ? 'X ' : 'O '} turn`
+    } else if (winner === 'T'){
+      messageEl.textContent = `It's a tie`
     } else {
-      messageEl.textContent = 'Congratulations Player ' + winner + ' has Won!'
+      messageEl.textContent = `Player ${winner} wins`
     }
   });
 }
@@ -90,9 +87,9 @@ function render(){
 function getWinner(){
   let total = []
   winningCombos.forEach(function(combo){
-    const sum = combo[0] + combo[1] + combo [2]
+    const sum = board[combo[0]] + board[combo[1]] + board[combo[2]]
     total.push(sum)
-    console.log(winner)
+    // console.log(sum)
   })
 
   let xIsW = total.some(x =>  x === 3)
@@ -100,7 +97,6 @@ function getWinner(){
   let oIsW = total.some(o =>  o === -3)
 
   let isTie = board.some(square => square === null)
-
   if(xIsW){
     winner = 'X'
   } else if(oIsW){
@@ -110,4 +106,5 @@ function getWinner(){
       winner = 'T'
     }
   }
+  console.log(winner)
 }
