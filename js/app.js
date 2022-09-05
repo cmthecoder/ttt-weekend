@@ -24,10 +24,12 @@ const messageEl = document.getElementById('message')
 
 const listenToBoard = document.querySelector('.board')
 
+const resetBtnEl = document.getElementById('button')
 
 /*----------------------------- Event Listeners -----------------------------*/
 listenToBoard.addEventListener('click', handleClick)
 
+resetBtnEl.addEventListener('click', init)
 
 /*-------------------------------- Functions --------------------------------*/
 init()
@@ -42,15 +44,13 @@ function init(){
 
 
 function handleClick(evt){
-  console.log(evt.target.id)
   let indexSquare = evt.target.id
   let sqIdx = indexSquare.slice(2, 3)
-  console.log(sqIdx)
 
-  if(board[sqIdx] !== null ){
+  if(board[sqIdx] != null ){
     return
   }
-  if(winner !== null){
+  if(winner != null){
     return
   }
   board[sqIdx] = turn
@@ -61,17 +61,15 @@ function handleClick(evt){
 
 
 function render(){
-  board.forEach((box, idx) => {
-    if(box === 1){
+  board.forEach((square, idx) => {
+    if(square === 1){
       squareEls[idx].textContent = 'X'
       squareEls[idx].style.color = 'yellow'
-      
-      // style the square depending on the value
     }
-    if(box === -1){
+
+    if(square === -1){
       squareEls[idx].textContent = 'O'
       squareEls[idx].style.color = 'blue'
-      // style the square depending on the value
     }
     
     if(winner === null){
@@ -80,10 +78,10 @@ function render(){
       } else{
         messageEl.textContent = "Player O's Turn!"
       }
-    }  else if(winner === 'T'){
+    } else if(winner === 'T'){
       messageEl.textContent = "It's a tie!"
     } else {
-      messageEl.textContent = 'Congradulations Player ' + turn + ' has Won!'
+      messageEl.textContent = 'Congratulations Player ' + winner + ' has Won!'
     }
   });
 }
@@ -94,6 +92,7 @@ function getWinner(){
   winningCombos.forEach(function(combo){
     const sum = combo[0] + combo[1] + combo [2]
     total.push(sum)
+    console.log(winner)
   })
 
   let xIsW = total.some(x =>  x === 3)
