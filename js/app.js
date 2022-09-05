@@ -72,7 +72,6 @@ function render(){
       squareEls[idx].style.color = 'blue'
     }
 
-    console.log(winner)
     if(winner === null){
       messageEl.textContent = `Player ${turn === 1 ? 'X ' : 'O '} turn`
     } else if (winner === 'T'){
@@ -89,7 +88,6 @@ function getWinner(){
   winningCombos.forEach(function(combo){
     const sum = board[combo[0]] + board[combo[1]] + board[combo[2]]
     total.push(sum)
-    // console.log(sum)
   })
 
   let xIsW = total.some(x =>  x === 3)
@@ -106,5 +104,4 @@ function getWinner(){
       winner = 'T'
     }
   }
-  console.log(winner)
 }
