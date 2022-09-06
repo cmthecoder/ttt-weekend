@@ -30,7 +30,7 @@ const resetBtnEl = document.getElementById('button')
 listenToBoard.addEventListener('click', handleClick)
 
 resetBtnEl.addEventListener('click', init)
-console.log(resetBtnEl)
+
 
 /*-------------------------------- Functions --------------------------------*/
 init()
