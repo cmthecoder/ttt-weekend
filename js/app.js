@@ -78,7 +78,7 @@ function render(){
     }
 
     if(winner === null){
-      messageEl.textContent = `Player ${turn === 1 ? 'X ' : 'O '} turn`
+      messageEl.textContent = `Player ${turn === 1 ? 'X' : 'O'}'s turn`
     } else if (winner === 'T'){
       messageEl.textContent = `It's a tie`
     } else {
