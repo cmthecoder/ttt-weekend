@@ -73,6 +73,10 @@ function render(){
       squareEls[idx].style.color = 'blue'
     }
 
+    if(box === null){
+      squareEls[idx].textContent = ''
+    }
+
     if(winner === null){
       messageEl.textContent = `Player ${turn === 1 ? 'X ' : 'O '} turn`
     } else if (winner === 'T'){
