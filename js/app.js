@@ -65,7 +65,7 @@ function render(){
   board.forEach((box, idx) => {
     if(box === 1){
       squareEls[idx].textContent = 'X'
-      squareEls[idx].style.color = 'yellow'
+      squareEls[idx].style.color = '#0CCA4A'
     }
 
     if(box === -1){
@@ -100,7 +100,7 @@ function getWinner(){
   let oIsW = total.some(o =>  o === -3)
 
   let isTie = board.some(square => square === null)
-  
+
   if(xIsW){
     winner = 'X'
   } else if(oIsW){
