@@ -23,7 +23,7 @@ const squareEls = document.querySelectorAll('.square')
 const messageEl = document.getElementById('message')
 
 const listenToBoard = document.querySelector('.board')
-
+console.log(listenToBoard)
 const resetBtnEl = document.getElementById('button')
 
 /*----------------------------- Event Listeners -----------------------------*/
@@ -100,6 +100,7 @@ function getWinner(){
   let oIsW = total.some(o =>  o === -3)
 
   let isTie = board.some(square => square === null)
+  
   if(xIsW){
     winner = 'X'
   } else if(oIsW){
